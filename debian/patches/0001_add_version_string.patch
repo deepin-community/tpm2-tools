@@ -1,0 +1,20 @@
+Description: Add version string to configure.ac
+ The configure.ac uses git to get the version string. However the git command
+ cannot get the version string because this is not a git repo.
+ In Debian we should get the string from debian/changelog.
+Author: Ying-Chun Liu (PaulLiu) <paulliu@debian.org>
+Bug-Debian: https://bugs.debian.org/913503
+Last-Update: 2018-12-10
+Index: tpm2-tools-5.3/bootstrap
+===================================================================
+--- tpm2-tools-5.3.orig/bootstrap
++++ tpm2-tools-5.3/bootstrap
+@@ -5,7 +5,7 @@ set -e
+ 
+ # Generate a VERSION file that is included in the dist tarball to avoid needed git
+ # when calling autoreconf in a release tarball.
+-git describe --tags --always --dirty > VERSION
++dpkg-parsechangelog | grep Version: | sed -e 's/Version: //' | sed -e 's/-[^-]\+$//' > VERSION
+ 
+ # generate list of source files for use in Makefile.am
+ # if you add new source files, you must run ./bootstrap again
