@@ -1,3 +1,9 @@
+tpm2-tools (5.7-1deepin2) unstable; urgency=medium
+
+  * Rebuild against new tpm2-tss version
+
+ -- lichenggang <lichenggang@deepin.org>  Tue, 28 Apr 2026 17:44:14 +0800
+
 tpm2-tools (5.7-1deepin1) unstable; urgency=low
 
   * add ecc encrypt/decrypt commands support
